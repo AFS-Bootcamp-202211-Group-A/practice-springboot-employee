@@ -39,4 +39,12 @@ public class CompanyRepository {
                 .orElse(1);
         return nextId + 1;
     }
+
+    public Company updateCompany(Integer id, Company company) {
+        Company existingCompany = getCompanyById(id);
+        if (existingCompany.getName() != null) {
+            existingCompany.setName(company.getName());
+        }
+        return existingCompany;
+    }
 }

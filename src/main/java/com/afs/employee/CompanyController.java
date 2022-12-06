@@ -31,8 +31,11 @@ public class CompanyController {
     public Company createCompany(@RequestBody Company company) {
         return companyRepository.createCompany(company);
     }
-//    PUT       /companies/1  #update a company name
-//
+
+    @PutMapping("/{id}")
+    public Company updateCompany(@PathVariable Integer id, @RequestBody Company company) {
+        return companyRepository.updateCompany(id, company);
+    }
 //    DELETE    /companies/1  # delete a company
 
 
