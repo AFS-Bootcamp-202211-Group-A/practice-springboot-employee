@@ -18,11 +18,17 @@ public class CompanyRepository {
             new Employee(2, "Jenny2", 21, "female", 8100));
 
     public CompanyRepository() {
-        companies.add(new Company(1,"company1",employeesList1));
-        companies.add(new Company(2,"company2",employeesList2));
+        companies.add(new Company(1, "company1", employeesList1));
+        companies.add(new Company(2, "company2", employeesList2));
     }
 
     public List<Company> findAll() {
         return companies;
+    }
+
+    public Company findById(Integer id) {
+        return companies.stream()
+                .filter(company -> company.getId().equals(id))
+                .findFirst().get();
     }
 }
