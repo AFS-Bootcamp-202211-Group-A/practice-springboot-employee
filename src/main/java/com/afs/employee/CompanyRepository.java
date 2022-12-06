@@ -72,9 +72,6 @@ public class CompanyRepository {
         if (company.getCompanyName() != null){
             existingCompany.setCompanyName(company.getCompanyName());
         }
-        if(company.getEmployees() != null){
-            existingCompany.setEmployees(company.getEmployees());
-        }
         return existingCompany;
     }
 
