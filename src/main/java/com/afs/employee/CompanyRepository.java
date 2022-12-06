@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class CompanyRepository {
@@ -20,6 +21,10 @@ public class CompanyRepository {
     public CompanyRepository() {
         companies.add(new Company(1, "company1", employeesList1));
         companies.add(new Company(2, "company2", employeesList2));
+        companies.add(new Company(3, "company3", employeesList1));
+        companies.add(new Company(4, "company4", employeesList2));
+        companies.add(new Company(5, "company5", employeesList1));
+        companies.add(new Company(6, "company6", employeesList2));
     }
 
     public List<Company> findAll() {
@@ -38,5 +43,12 @@ public class CompanyRepository {
                 .findFirst()
                 .get();
         return companyById.getEmployees();
+    }
+
+    public List<Company> findByPage(Integer page, Integer pageSize) {
+        return companies.stream()
+                .skip(page-1)
+                .limit(pageSize)
+                .collect(Collectors.toList());
     }
 }
