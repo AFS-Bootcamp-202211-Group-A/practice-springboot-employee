@@ -63,4 +63,8 @@ public class EmployeeRepository {
         employeeList.remove(existingEmployee);
         return existingEmployee;
     }
+
+    public List<Employee> getEmployeePages(Integer page, Integer pageSize) {
+        return employeeList.stream().limit(page *pageSize).collect(Collectors.toList());
+    }
 }
