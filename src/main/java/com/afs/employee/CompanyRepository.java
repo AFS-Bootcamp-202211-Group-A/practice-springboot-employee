@@ -47,4 +47,10 @@ public class CompanyRepository {
         }
         return existingCompany;
     }
+
+    public Company deleteCompany(Integer id) {
+        Company existingCompany = getCompanyById(id);
+        this.companyList.remove(existingCompany);
+        return existingCompany;
+    }
 }
