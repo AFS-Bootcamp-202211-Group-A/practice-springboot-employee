@@ -26,4 +26,10 @@ public class CompanyController {
     public Company findCompanyById(@PathVariable Integer id){
         return companyRepository.findById(id);
     }
+
+    @GetMapping("/{id}/employees")
+    public List<Employee> findEmployeesInCompany(@PathVariable Integer id) {
+        return companyRepository.findEmployeesInCompany(id);
+    }
+
 }
