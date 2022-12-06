@@ -24,4 +24,19 @@ public class CompanyRepository {
                 .findFirst()
                 .orElseThrow(NoCompanyFoundException::new);
     }
+
+    public Company createCompany(Company company) {
+        Integer id = generateNextId();
+        company.setId(id);
+        this.companyList.add(company);
+        return company;
+    }
+
+    private Integer generateNextId() {
+        Integer nextId = this.companyList.stream()
+                .mapToInt(Company::getId)
+                .max()
+                .orElse(1);
+        return nextId + 1;
+    }
 }

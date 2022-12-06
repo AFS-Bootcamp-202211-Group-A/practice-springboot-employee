@@ -2,12 +2,16 @@ package com.afs.employee;
 
 public class Company {
 
-    private final Integer id;
+    private Integer id;
     private String name;
 
     public Company(Integer id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getId() {
