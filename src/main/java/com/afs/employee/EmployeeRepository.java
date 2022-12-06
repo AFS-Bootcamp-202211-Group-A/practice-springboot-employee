@@ -20,7 +20,7 @@ public class EmployeeRepository {
         return employeeList;
     }
 
-    public Employee getOneWithID(Integer id) {
+    public Employee getEmployeeById(Integer id) {
         return employeeList.stream()
                 .filter(employee -> employee.getId().equals(id))
                 .findFirst()
@@ -48,7 +48,7 @@ public class EmployeeRepository {
     }
 
     public Employee updateEmployee(Integer id, Employee employee) {
-        Employee existingEmployee = getOneWithID(id);
+        Employee existingEmployee = getEmployeeById(id);
         if (employee.getAge() != null) {
             existingEmployee.setAge(employee.getAge());
         }
