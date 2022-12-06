@@ -15,7 +15,10 @@ public class EmployeeRepository {
         this.employees = new ArrayList<>();
         employees.add(new Employee(1, "Lily", 20, "female", 8000));
         employees.add(new Employee(2, "Lily2", 21, "female", 8100));
-        employees.add(new Employee(3, "Dummy", 22, "male", 812300));
+        employees.add(new Employee(3, "Dummy3", 22, "male", 812300));
+        employees.add(new Employee(4, "Lily4", 20, "female", 48000));
+        employees.add(new Employee(5, "Lily5", 21, "female", 58100));
+        employees.add(new Employee(6, "Dummy6", 22, "male", 68100));
     }
 
     public List<Employee> findAll() {
@@ -65,7 +68,7 @@ public class EmployeeRepository {
 
     public List<Employee> findByPage(Integer page, Integer pageSize) {
         return employees.stream()
-                .skip(page)
+                .skip(page-1)
                 .limit(pageSize)
                 .collect(Collectors.toList());
     }
