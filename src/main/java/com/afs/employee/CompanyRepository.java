@@ -31,4 +31,12 @@ public class CompanyRepository {
                 .filter(company -> company.getId().equals(id))
                 .findFirst().get();
     }
+
+    public List<Employee> findAllEmployeeById(Integer id) {
+        Company companyById = companies.stream()
+                .filter(company -> company.getId().equals(id))
+                .findFirst()
+                .get();
+        return companyById.getEmployees();
+    }
 }
