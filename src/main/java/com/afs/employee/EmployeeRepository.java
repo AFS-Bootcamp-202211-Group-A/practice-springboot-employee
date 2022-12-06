@@ -30,4 +30,33 @@ public class EmployeeRepository {
     public List<Employee> findAllByGender(String gender) {
         return employees.stream().filter(employee -> employee.getGender().equals(gender)).collect(Collectors.toList());
     }
+
+    public Employee create(Employee employee) {
+        int id = generateNextId();
+        employee.setId(id);
+        employees.add(employee);
+        return employee;
+
+    }
+
+    private Integer generateNextId() {
+        int nextId = employees
+                .stream()
+                .mapToInt(employee -> employee.getId())
+                .max()
+                .orElse(1);
+        return nextId + 1;
+    }
+
+    public Employee update(int id, Employee employee){
+        Employee existingEmployee = findById(id);
+        if (employee.getId() != null){
+            existingEmployee.setAge(employee.getAge());
+        }
+        if(employee.getSalary() != null){
+            existingEmployee.setSalary(employee.getSalary());
+        }
+        return existingEmployee;
+
+    }
 }
