@@ -30,4 +30,20 @@ public class EmployeeRepository {
     public List<Employee> findAllByGender(String gender) {
         return employees.stream().filter(employee -> employee.getGender().equals(gender)).collect(Collectors.toList());
     }
+
+
+    public Employee create(Employee employee) {
+        Integer nextId = generateNextId();
+        employee.setId(nextId);
+        employees.add(employee);
+        return employee;
+    }
+
+    private Integer generateNextId(){
+        int nextId = employees.stream()
+                .mapToInt(Employee::getId)
+                .max()
+                .orElse(1);
+        return nextId+1;
+    }
 }
