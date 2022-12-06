@@ -1,5 +1,6 @@
 package com.afs.employee;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,5 +26,11 @@ public class EmployeeController {
     @GetMapping(params = {"gender"})
     public List<Employee> getByGender(@RequestParam String gender){
         return employeeRepository.findByGender(gender);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Employee  addEmployee(@RequestBody Employee employee) {
+        return employeeRepository.create(employee);
     }
 }
