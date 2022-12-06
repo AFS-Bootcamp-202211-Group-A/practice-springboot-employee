@@ -2,6 +2,7 @@ package com.afs.employee;
 
 import org.springframework.stereotype.Repository;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,8 +12,11 @@ public class CompanyRepository {
 
     public CompanyRepository(List<Company> companyList) {
         this.companyList = companyList;
-        companyList.add(new Company(1, "spring"));
-        companyList.add(new Company(2, "boot"));
+        Employee lily = new Employee(1, "Lily", 20, "Female", 8000);
+        Employee lucy = new Employee(2, "Lucy", 21, "Female", 7000);
+        Employee leo = new Employee(3, "Leo", 19, "Male", 6000);
+        companyList.add(new Company(1, "spring", Arrays.asList(lily)));
+        companyList.add(new Company(2, "boot", Arrays.asList(lucy, leo)));
     }
 
     public List<Company> getAll() {
@@ -57,5 +61,10 @@ public class CompanyRepository {
 
     public List<Company> getCompanyByPage(Integer page, Integer pageSize) {
         return companyList.stream().limit(page *pageSize).collect(Collectors.toList());
+    }
+
+    public List<Employee> getEmployeesInCompanyById(Integer id) {
+        Company company = getCompanyById(id);
+        return company.getEmployees();
     }
 }
