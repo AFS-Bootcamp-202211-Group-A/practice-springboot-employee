@@ -1,5 +1,6 @@
 package com.afs.employee;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -33,5 +34,11 @@ public class CompanyController {
     @GetMapping(params = {"page", "pageSize"})
     public List<Company> getCompanyDataByPage(@RequestParam Integer page, @RequestParam Integer pageSize) {
         return companyRepository.findByPage(page, pageSize);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Company createCompany(@RequestBody Company company){
+        return companyRepository.create(company);
     }
 }

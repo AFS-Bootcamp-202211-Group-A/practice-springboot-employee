@@ -51,4 +51,19 @@ public class CompanyRepository {
                 .limit(pageSize)
                 .collect(Collectors.toList());
     }
+
+    public Company create(Company company) {
+        Integer nextId = generateNextId();
+        company.setId(nextId);
+        companies.add(company);
+        return company;
+    }
+
+    private Integer generateNextId() {
+        int nextId = companies.stream()
+                .mapToInt(Company::getId)
+                .max()
+                .orElse(1);
+        return nextId+1;
+    }
 }
