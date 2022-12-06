@@ -37,16 +37,16 @@ public class EmployeeController {
     }
 
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public Employee updateEmployee(@PathVariable Integer id, @RequestBody Employee employee){
-        return employeeRepository.updateEmployee(id, employee);
+        return employeeRepository.updateEmployeeAgeAndSalary(id, employee);
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteEmployee(@PathVariable Integer id){
         employeeRepository.deleteEmployee(id);
     }
-
 
     @GetMapping(params = {"page","pageSize"})
     public List<Employee> getEmployeeByPage(@RequestParam int page, @RequestParam int pageSize){

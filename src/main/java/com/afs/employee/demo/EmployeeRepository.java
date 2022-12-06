@@ -47,11 +47,11 @@ public class EmployeeRepository {
                 .orElse(1) + 1;
     }
 
-    public Employee updateEmployee(Integer id, Employee employee) {
+    public Employee updateEmployeeAgeAndSalary(Integer id, Employee employee) {
         Employee existingEmployee = employees.stream().filter(i -> i.getId().equals(id)).findFirst().get();
         existingEmployee.setAge(employee.getAge());
         existingEmployee.setSalary(employee.getSalary());
-
+        System.out.println(employee.getId());
         return existingEmployee;
     }
 
