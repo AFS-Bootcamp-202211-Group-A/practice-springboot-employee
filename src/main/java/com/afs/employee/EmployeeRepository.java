@@ -57,4 +57,9 @@ public class EmployeeRepository {
         }
         return existingEmployee;
     }
+
+    public Employee delete(Employee employee) {
+        employees.remove(employee);
+        return employee;
+    }
 }
