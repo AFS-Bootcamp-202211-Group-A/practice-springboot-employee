@@ -77,4 +77,9 @@ public class CompanyRepository {
         }
         return existingCompany;
     }
+
+    public Company delete(Company company) {
+        companies.remove(company);
+        return company;
+    }
 }
