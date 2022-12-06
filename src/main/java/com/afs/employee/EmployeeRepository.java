@@ -70,7 +70,6 @@ public class EmployeeRepository {
     public List<Employee> getListByPage(Integer page, Integer pageSize) {
         Integer startIndex = (page - 1) * pageSize;
         Integer toIndex = startIndex + pageSize;
-        System.out.println(String.valueOf(startIndex)+ toIndex);
         return employees.subList(startIndex, toIndex);
     }
 }
