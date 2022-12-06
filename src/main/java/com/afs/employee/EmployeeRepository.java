@@ -31,4 +31,19 @@ public class EmployeeRepository {
         System.out.println(gender);
         return employeeList.stream().filter(employee -> employee.getGender().equals(gender)).collect(Collectors.toList());
     }
+
+    public Employee createEmployee(Employee employee) {
+        Integer id = generateNextId();
+        employee.setId(id);
+        this.employeeList.add(employee);
+        return employee;
+    }
+
+    private Integer generateNextId() {
+        int nextId = this.employeeList.stream()
+                .mapToInt(Employee::getId)
+                .max()
+                .orElse(1);
+        return nextId + 1;
+    }
 }
