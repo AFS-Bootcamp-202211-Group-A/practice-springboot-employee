@@ -23,7 +23,7 @@ public class EmployeeRepository {
     }
 
 
-    public Employee findById(int id){
+    public Employee findById(Integer id){
         return employees.stream().filter(employee -> employee.getId() == id).findFirst().get();
     }
 
@@ -48,9 +48,9 @@ public class EmployeeRepository {
         return nextId + 1;
     }
 
-    public Employee update(int id, Employee employee){
+    public Employee update(Integer id, Employee employee){
         Employee existingEmployee = findById(id);
-        if (employee.getId() != null){
+        if (employee.getAge() != null){
             existingEmployee.setAge(employee.getAge());
         }
         if(employee.getSalary() != null){
@@ -58,5 +58,12 @@ public class EmployeeRepository {
         }
         return existingEmployee;
 
+    }
+
+    public List<Employee> delete(Integer id) {
+        return employees
+                .stream()
+                .filter(employee -> employee.getId() != id)
+                .collect(Collectors.toList());
     }
 }

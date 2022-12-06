@@ -24,7 +24,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public Employee getById(@PathVariable int id) {
+    public Employee getById(@PathVariable Integer id) {
 
         return employeeRepository.findById(id);
     }
@@ -44,6 +44,12 @@ public class EmployeeController {
     @PutMapping("/{id}")
     public Employee updateEmployee(@PathVariable Integer id, @RequestBody Employee employee){
         return employeeRepository.update(id, employee);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.PAYMENT_REQUIRED)
+    public List<Employee> deleteById(@PathVariable Integer id){
+        return employeeRepository.delete(id);
     }
     
 }
