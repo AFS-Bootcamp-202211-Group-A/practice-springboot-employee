@@ -59,6 +59,13 @@ public class EmployeeRepository {
         }
         return existingEmployee;
     }
+
+    public void delete(Integer id) {
+        employees = employees
+                .stream()
+                .filter(employee -> !employee.getId().equals(id))
+                .collect(Collectors.toList());
+    }
 }
 
 //{
