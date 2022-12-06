@@ -1,5 +1,6 @@
 package com.afs.employee.demo;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +24,6 @@ public class EmployeeController {
     public List<Employee> getEmployeeById(@PathVariable int id){
         return employeeRepository.findEmployeeById(id);
     }
-//    @GetMapping(params = {""})
 
     @GetMapping(params = {"gender"})
     public List<Employee> getEmployeeByGender(@RequestParam String gender){
@@ -34,6 +34,12 @@ public class EmployeeController {
     @ResponseStatus(HttpStatus.CREATED)
     public Employee addEmployee(@RequestBody Employee employee){
         return employeeRepository.createEmployee(employee);
+    }
+
+
+    @PostMapping("/{id}")
+    public Employee updateEmployee(@PathVariable Integer id, @RequestBody Employee employee){
+        return employeeRepository.updateEmployee(id, employee);
     }
 
 }
