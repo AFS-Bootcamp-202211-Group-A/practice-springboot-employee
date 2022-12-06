@@ -37,8 +37,8 @@ public class CompanyRepository {
         return company;
     }
 
-    private Integer generateNextId() {
-        Integer nextId = this.companyList.stream()
+    private int generateNextId() {
+        int nextId = this.companyList.stream()
                 .mapToInt(Company::getId)
                 .max()
                 .orElse(1);
