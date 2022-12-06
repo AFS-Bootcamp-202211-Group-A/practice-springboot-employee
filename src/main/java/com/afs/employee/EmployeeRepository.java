@@ -48,6 +48,17 @@ public class EmployeeRepository {
                 .orElse(0);
         return nextId + 1;
     }
+
+    public Employee update(int id, Employee employee) {
+        Employee existingEmployee = findById(id);
+        if(employee.getAge() != null){
+            existingEmployee.setAge(employee.getAge());
+        }
+        if(employee.getSalary() != null){
+            existingEmployee.setSalary(employee.getSalary());
+        }
+        return existingEmployee;
+    }
 }
 
 //{
