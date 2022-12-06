@@ -1,9 +1,11 @@
 package com.afs.employee;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class CompanyRepository {
@@ -21,13 +23,17 @@ public class CompanyRepository {
 
 
     public List<Company> findAll() {
-        return companies;
+        return companies.stream()
+                .map(company -> new Company(company.getId(), company.getName(), new ArrayList<>()))
+                .collect(Collectors.toList());
     }
 
     public Company findById(Integer id) {
         return companies.stream()
+                .map(company -> new Company(company.getId(), company.getName(), new ArrayList<>()))
                 .filter(company -> company.getId().equals(id))
                 .findFirst()
                 .get();
     }
+
 }

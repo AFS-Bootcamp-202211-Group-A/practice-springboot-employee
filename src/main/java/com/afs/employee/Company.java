@@ -1,5 +1,8 @@
 package com.afs.employee;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.util.List;
 
 public class Company {
@@ -13,6 +16,7 @@ public class Company {
         this.employees = employees;
     }
 
+
     public Integer getId() {
         return id;
     }
@@ -21,6 +25,7 @@ public class Company {
         return name;
     }
 
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     public List<Employee> getEmployees() {
         return employees;
     }
@@ -33,6 +38,7 @@ public class Company {
         this.name = name;
     }
 
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
