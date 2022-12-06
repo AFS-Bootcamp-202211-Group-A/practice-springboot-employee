@@ -13,9 +13,9 @@ public class EmployeeRepository {
 
     public EmployeeRepository(){
         this.employees = new ArrayList<>();
-        employees.add(new Employee(1, "Lily", 20, "Female", 8000));
-        employees.add(new Employee(2, "Lily2", 21, "Female", 8100));
-        employees.add(new Employee(3, "Dummy", 22, "Male", 812300));
+        employees.add(new Employee(1, "Lily", 20, "female", 8000));
+        employees.add(new Employee(2, "Lily2", 21, "female", 8100));
+        employees.add(new Employee(3, "Dummy", 22, "male", 812300));
     }
 
     public List<Employee> findAll() {
