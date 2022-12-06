@@ -1,4 +1,4 @@
-package com.afs.employee.demo;
+package com.afs.employee;
 
 public class Employee {
     private int id;

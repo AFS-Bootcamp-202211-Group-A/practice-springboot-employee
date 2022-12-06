@@ -1,4 +1,4 @@
-package com.afs.employee.demo;
+package com.afs.employee;
 
 import org.springframework.web.bind.annotation.*;
 
