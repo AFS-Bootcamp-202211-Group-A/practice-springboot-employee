@@ -64,8 +64,13 @@ public class EmployeeRepository {
         Employee deleteEmployee = findById(id);
         employees.remove(deleteEmployee);
     }
-}
 
+    public List<Employee> findWithPage(int page, int pageSize) {
+        int startIndex = (pageSize*page)-pageSize;
+        int endIndex = pageSize*page>employees.size()?employees.size():pageSize*page;
+        return employees.subList(startIndex, endIndex);
+    }
+}
 //{
 //    "id": 5,
 //    "name": "Lily",
