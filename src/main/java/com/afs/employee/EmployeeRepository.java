@@ -15,6 +15,12 @@ public class EmployeeRepository {
         employees.add(new Employee(1,"Thomas", 20, "Male", 8000));
         employees.add(new Employee(2,"Michael", 21, "Male", 8000));
         employees.add(new Employee(3,"Amy", 22, "Female", 8000));
+        employees.add(new Employee(4,"Brian", 20, "Male", 8000));
+        employees.add(new Employee(5,"Ken", 21, "Male", 8000));
+        employees.add(new Employee(6,"Carrie", 22, "Female", 8000));
+        employees.add(new Employee(7,"Peter", 20, "Male", 8000));
+        employees.add(new Employee(8,"Avalon", 21, "Male", 8000));
+
     }
 
     public List<Employee> findAll() {
@@ -64,6 +70,14 @@ public class EmployeeRepository {
         employees = employees
                 .stream()
                 .filter(employee -> !employee.getId().equals(id))
+                .collect(Collectors.toList());
+    }
+
+    public List<Employee> findByPage(long page, long pageSize) {
+        return employees
+                .stream()
+                .skip((page-1) * pageSize)
+                .limit(pageSize)
                 .collect(Collectors.toList());
     }
 }
