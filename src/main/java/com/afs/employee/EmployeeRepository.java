@@ -64,7 +64,7 @@ public class EmployeeRepository {
         return existingEmployee;
     }
 
-    public List<Employee> getEmployeePages(Integer page, Integer pageSize) {
+    public List<Employee> getEmployeeByPage(Integer page, Integer pageSize) {
         return employeeList.stream().limit(page *pageSize).collect(Collectors.toList());
     }
 }
