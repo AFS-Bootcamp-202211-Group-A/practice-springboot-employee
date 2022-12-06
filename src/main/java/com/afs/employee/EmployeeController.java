@@ -3,6 +3,7 @@ package com.afs.employee;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/employees")
@@ -21,8 +22,8 @@ public class EmployeeController {
     public Employee getById(@PathVariable int id){
         return employeeRepository.findById(id);
     }
-    @GetMapping(params = {"?gender={gender}"})
-    public Employee getByGender(@RequestParam String gender){
-        return null;
+    @GetMapping(params = {"gender"})
+    public List<Employee> getByGender(@RequestParam String gender){
+        return employeeRepository.findByGender(gender);
     }
 }
