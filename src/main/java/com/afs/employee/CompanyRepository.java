@@ -17,4 +17,11 @@ public class CompanyRepository {
     public List<Company> getAll() {
         return this.companyList;
     }
+
+    public Company getCompanyById(Integer id) {
+        return this.companyList.stream()
+                .filter(company -> company.getId().equals(id))
+                .findFirst()
+                .orElseThrow(NoCompanyFoundException::new);
+    }
 }
