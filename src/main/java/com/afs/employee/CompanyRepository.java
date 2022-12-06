@@ -3,6 +3,7 @@ package com.afs.employee;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class CompanyRepository {
@@ -52,5 +53,9 @@ public class CompanyRepository {
         Company existingCompany = getCompanyById(id);
         this.companyList.remove(existingCompany);
         return existingCompany;
+    }
+
+    public List<Company> getCompanyByPage(Integer page, Integer pageSize) {
+        return companyList.stream().limit(page *pageSize).collect(Collectors.toList());
     }
 }
