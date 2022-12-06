@@ -30,4 +30,10 @@ public class EmployeeController {
         return employeeRepository.findEmployeeByGender(gender);
     }
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Employee addEmployee(@RequestBody Employee employee){
+        return employeeRepository.createEmployee(employee);
+    }
+
 }
