@@ -25,7 +25,7 @@ public class EmployeeRepository {
         return employees.stream()
                 .filter(employee -> employee.getId()==id)
                 .findFirst()
-                .get();
+                .orElseThrow(EmployeeNotFoundException::new);
     }
 
     public List<Employee> findByGender(String gender) {
@@ -58,6 +58,11 @@ public class EmployeeRepository {
             existingEmployee.setSalary(employee.getSalary());
         }
         return existingEmployee;
+    }
+
+    public void delete(int id) {
+        Employee deleteEmployee = findById(id);
+        employees.remove(deleteEmployee);
     }
 }
 
