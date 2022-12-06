@@ -47,9 +47,15 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.PAYMENT_REQUIRED)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public List<Employee> deleteById(@PathVariable Integer id){
         return employeeRepository.delete(id);
+    }
+
+
+    @GetMapping(params = {"page", "pageSize"})
+    public List<Employee> getListByPage(@RequestParam Integer page, @RequestParam Integer pageSize){
+        return employeeRepository.getListByPage(page, pageSize);
     }
     
 }
