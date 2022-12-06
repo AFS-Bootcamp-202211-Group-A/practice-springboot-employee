@@ -34,6 +34,20 @@ public class EmployeeRepository {
                 .collect(Collectors.toList());
     }
 
+    public Employee create(Employee employee) {
+        int nextId = generateNextId();
+        employee.setId(nextId);
+        employees.add(employee);
+        return employee;
+    }
+
+    private int generateNextId() {
+        int nextId = employees.stream()
+                .mapToInt(employee -> employee.getId())
+                .max()
+                .orElse(0);
+        return nextId + 1;
+    }
 }
 
 //{
