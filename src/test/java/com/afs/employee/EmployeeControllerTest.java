@@ -43,4 +43,20 @@ public class EmployeeControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].gender").value("Female"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].salary").value(10000));
     }
+
+    @Test
+    void should_get_employee_by_id_when_perform_get_by_id_given_employees() throws Exception {
+        // given
+        Employee susan = employeeRepository.createEmployee(new Employee(10, "Susan", 22, "Female", 10000));
+        employeeRepository.createEmployee(new Employee(11, "Bob", 11, "Male", 1000));
+        // when & then
+        client.perform(MockMvcRequestBuilders.get("/employees/{id}", susan.getId()))
+                // 1. assert response code
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                // 2. assert response data
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Susan"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.age").value(22))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.gender").value("Female"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.salary").value(10000));
+    }
 }
