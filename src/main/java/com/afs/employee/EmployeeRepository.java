@@ -2,6 +2,7 @@ package com.afs.employee;
 
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -68,5 +69,9 @@ public class EmployeeRepository {
                 .skip((long)(page-1) * pageSize)
                 .limit(pageSize)
                 .collect(Collectors.toList());
+    }
+
+    void clearAll() {
+        employeeList.clear();
     }
 }
