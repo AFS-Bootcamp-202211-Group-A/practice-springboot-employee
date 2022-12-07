@@ -60,11 +60,8 @@ public class EmployeeRepository {
 
     }
 
-    public List<Employee> delete(Integer id) {
-        return employees
-                .stream()
-                .filter(employee -> employee.getId() != id)
-                .collect(Collectors.toList());
+    public void delete(Integer id) {
+        employees.removeIf(employee -> employee.getId() == id);
     }
 
     public List<Employee> getListByPage(Integer page, Integer pageSize) {
