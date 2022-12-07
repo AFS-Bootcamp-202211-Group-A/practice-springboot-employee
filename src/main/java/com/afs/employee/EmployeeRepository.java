@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 @Repository
 public class EmployeeRepository {
-    List<Employee> employeeList;
+    private final List<Employee> employeeList;
 
     public EmployeeRepository(List<Employee> employeeList) {
         this.employeeList = employeeList;

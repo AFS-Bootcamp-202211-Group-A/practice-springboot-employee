@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 @Repository
 public class CompanyRepository {
-    List<Company> companyList;
+    private final List<Company> companyList;
 
     public CompanyRepository(List<Company> companyList) {
         this.companyList = companyList;
