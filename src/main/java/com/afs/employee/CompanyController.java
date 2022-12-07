@@ -45,8 +45,8 @@ public class CompanyController {
     }
 
     @DeleteMapping("{id}")
-    public Company deleteCompany(@PathVariable Integer id) {
-        return companyRepository.deleteCompany(id);
+    public void deleteCompany(@PathVariable Integer id) {
+        companyRepository.deleteCompany(id);
     }
 
 }

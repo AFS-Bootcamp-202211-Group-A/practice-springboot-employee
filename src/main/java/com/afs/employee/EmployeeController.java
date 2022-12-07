@@ -46,8 +46,8 @@ public class EmployeeController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Employee deleteEmployee(@PathVariable Integer id) {
-        return employeeRepository.deleteEmployee(id);
+    public void deleteEmployee(@PathVariable Integer id) {
+        employeeRepository.deleteEmployee(id);
     }
 
     @GetMapping(params = {"page", "pageSize"})
