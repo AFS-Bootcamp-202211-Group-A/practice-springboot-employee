@@ -60,7 +60,10 @@ public class CompanyRepository {
     }
 
     public List<Company> getCompanyByPage(Integer page, Integer pageSize) {
-        return companyList.stream().limit(page *pageSize).collect(Collectors.toList());
+        return companyList.stream()
+                .skip((page-1) * pageSize)
+                .limit(pageSize)
+                .collect(Collectors.toList());
     }
 
     public List<Employee> getEmployeesInCompanyById(Integer id) {
